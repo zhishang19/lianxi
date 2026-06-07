@@ -1,0 +1,41 @@
+# OS Agent 记忆优化系统 - 依赖清单
+# ========================================
+# 训练营任务: 多源清洗实战 (D2-D6) + LangGraph 工作流 (阶段 3) + SQLite 检索 (阶段 4)
+# 建议 Python 版本: 3.10+ (开发环境 3.13.2)
+#
+# 安装方式:
+#   pip install -r requirements.txt
+#
+# 仅使用标准库即可运行: 大部分清洗逻辑走 re/json/csv/pathlib
+# 第三方库仅在可选优化时使用, 缺失会自动回退
+
+# ===== 核心依赖 (推荐安装) =====
+# 数据模糊解析 (dateutil 比 strptime 更强大, 支持"昨天/上周三/2026年6月1日"等)
+python-dateutil>=2.8.2
+
+# Aho-Corasick 自动机 (DFA 敏感词过滤, 缺失时用正则回退, 性能略低)
+pyahocorasick>=2.0.0
+
+# YAML 配置 (D4 config_manual.yaml 需要)
+PyYAML>=6.0
+
+# ===== 阶段 3 进阶 (LangGraph 工作流) =====
+# LangGraph 状态机框架
+langgraph>=0.2.0
+langchain-core>=0.3.0
+
+# ===== 阶段 4 进阶 (大模型集成, 可选) =====
+# 如需调用大模型做语义检索/答案生成
+# langchain>=0.3.0
+# openai>=1.0.0
+# tiktoken>=0.5.0
+
+# ===== 开发与测试 =====
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=23.0.0
+flake8>=6.0.0
+
+# ===== 性能分析 (可选) =====
+# memory_profiler>=0.61.0
+# line_profiler>=4.0.0
