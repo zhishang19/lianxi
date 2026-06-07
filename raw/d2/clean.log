@@ -98,3 +98,83 @@
 2026-06-07 19:57:18 | INFO  | 输出写入完成 | path=D:\藏数据\merged.jsonl, records=6
 2026-06-07 19:57:18 | INFO  | ==================================================
 2026-06-07 19:57:18 | INFO  | D2 合并去噪脚本完成 | total_input=9, valid_output=6
+2026-06-07 20:03:50 | INFO  | ==================================================
+2026-06-07 20:03:50 | INFO  | D2 合并去噪脚本启动
+2026-06-07 20:03:50 | INFO  | 输入: user_behavior.json + tool_result.json
+2026-06-07 20:03:50 | INFO  | 读取输入文件成功 | user=6, tool=3
+2026-06-07 20:03:50 | DEBUG | user_behavior 未知字段 | idx=0, warnings=['未知字段: action']
+2026-06-07 20:03:50 | DEBUG | user_behavior 未知字段 | idx=1, warnings=['未知字段: action']
+2026-06-07 20:03:50 | DEBUG | user_behavior 未知字段 | idx=2, warnings=['未知字段: action']
+2026-06-07 20:03:50 | DEBUG | user_behavior 未知字段 | idx=3, warnings=['未知字段: action']
+2026-06-07 20:03:50 | DEBUG | user_behavior 未知字段 | idx=4, warnings=['未知字段: action']
+2026-06-07 20:03:50 | ERROR | user_behavior 字段校验失败 | idx=5, errors=['缺少必需字段: content', '缺少必需字段: uid']
+2026-06-07 20:03:50 | DEBUG | user_behavior 未知字段 | idx=5, warnings=['未知字段: text', '未知字段: timestamp', '未知字段: user_id']
+2026-06-07 20:03:50 | WARNING | tool_result 缺失时间字段 | idx=0, uid=None
+2026-06-07 20:03:50 | WARNING | tool_result 缺失时间字段 | idx=1, uid=None
+2026-06-07 20:03:50 | WARNING | tool_result 缺失时间字段 | idx=2, uid=None
+2026-06-07 20:03:50 | INFO  | 完成字段归一化和文本清洗 | valid=9, total=9
+2026-06-07 20:03:50 | INFO  | 完成三级去重 | after_dedup=6, dropped=3
+2026-06-07 20:03:50 | INFO  | 时间解析统计 | failed=0, missing=2
+2026-06-07 20:03:50 | INFO  | 输出写入完成 | path=D:\藏数据\merged.jsonl, records=6
+2026-06-07 20:03:50 | INFO  | ==================================================
+2026-06-07 20:03:50 | INFO  | D2 合并去噪脚本完成 | total_input=9, valid_output=6
+2026-06-07 20:06:15 | INFO  | ==================================================
+2026-06-07 20:06:15 | INFO  | D2 合并去噪脚本启动
+2026-06-07 20:06:15 | INFO  | 输入: user_behavior.json + tool_result.json
+2026-06-07 20:06:15 | INFO  | 读取输入文件成功 | user=6, tool=3
+2026-06-07 20:06:15 | DEBUG | user_behavior 未知字段 | idx=0, warnings=['未知字段: action']
+2026-06-07 20:06:15 | DEBUG | user_behavior 未知字段 | idx=1, warnings=['未知字段: action']
+2026-06-07 20:06:15 | DEBUG | user_behavior 未知字段 | idx=2, warnings=['未知字段: action']
+2026-06-07 20:06:15 | DEBUG | user_behavior 未知字段 | idx=3, warnings=['未知字段: action']
+2026-06-07 20:06:15 | DEBUG | user_behavior 未知字段 | idx=4, warnings=['未知字段: action']
+2026-06-07 20:06:15 | ERROR | user_behavior 字段校验失败 | idx=5, errors=['缺少必需字段: content', '缺少必需字段: uid']
+2026-06-07 20:06:15 | DEBUG | user_behavior 未知字段 | idx=5, warnings=['未知字段: timestamp', '未知字段: text', '未知字段: user_id']
+2026-06-07 20:06:15 | WARNING | tool_result 缺失时间字段 | idx=0, uid=None
+2026-06-07 20:06:15 | WARNING | tool_result 缺失时间字段 | idx=1, uid=None
+2026-06-07 20:06:15 | WARNING | tool_result 缺失时间字段 | idx=2, uid=None
+2026-06-07 20:06:15 | INFO  | 完成字段归一化和文本清洗 | valid=9, total=9
+2026-06-07 20:06:15 | INFO  | 完成三级去重 | after_dedup=6, dropped=3
+2026-06-07 20:06:15 | INFO  | 时间解析统计 | failed=0, missing=2
+2026-06-07 20:06:15 | INFO  | 输出写入完成 | path=D:\藏数据\merged.jsonl, records=6
+2026-06-07 20:06:15 | INFO  | ==================================================
+2026-06-07 20:06:15 | INFO  | D2 合并去噪脚本完成 | total_input=9, valid_output=6
+2026-06-07 21:36:42 | INFO  | ==================================================
+2026-06-07 21:36:42 | INFO  | D2 合并去噪脚本启动
+2026-06-07 21:36:42 | INFO  | 输入: user_behavior.json + tool_result.json
+2026-06-07 21:36:42 | INFO  | 读取输入文件成功 | user=6, tool=3
+2026-06-07 21:36:42 | DEBUG | user_behavior 未知字段 | idx=0, warnings=['未知字段: action']
+2026-06-07 21:36:42 | DEBUG | user_behavior 未知字段 | idx=1, warnings=['未知字段: action']
+2026-06-07 21:36:42 | DEBUG | user_behavior 未知字段 | idx=2, warnings=['未知字段: action']
+2026-06-07 21:36:42 | DEBUG | user_behavior 未知字段 | idx=3, warnings=['未知字段: action']
+2026-06-07 21:36:42 | DEBUG | user_behavior 未知字段 | idx=4, warnings=['未知字段: action']
+2026-06-07 21:36:42 | ERROR | user_behavior 字段校验失败 | idx=5, errors=['缺少必需字段: uid', '缺少必需字段: content']
+2026-06-07 21:36:42 | DEBUG | user_behavior 未知字段 | idx=5, warnings=['未知字段: text', '未知字段: timestamp', '未知字段: user_id']
+2026-06-07 21:36:42 | WARNING | tool_result 缺失时间字段 | idx=0, uid=None
+2026-06-07 21:36:42 | WARNING | tool_result 缺失时间字段 | idx=1, uid=None
+2026-06-07 21:36:42 | WARNING | tool_result 缺失时间字段 | idx=2, uid=None
+2026-06-07 21:36:42 | INFO  | 完成字段归一化和文本清洗 | valid=9, total=9
+2026-06-07 21:36:42 | INFO  | 完成三级去重 | after_dedup=6, dropped=3
+2026-06-07 21:36:42 | INFO  | 时间解析统计 | failed=0, missing=2
+2026-06-07 21:36:42 | INFO  | 输出写入完成 | path=D:\藏数据\merged.jsonl, records=6
+2026-06-07 21:36:42 | INFO  | ==================================================
+2026-06-07 21:36:42 | INFO  | D2 合并去噪脚本完成 | total_input=9, valid_output=6
+2026-06-07 21:37:06 | INFO  | ==================================================
+2026-06-07 21:37:06 | INFO  | D2 合并去噪脚本启动
+2026-06-07 21:37:06 | INFO  | 输入: user_behavior.json + tool_result.json
+2026-06-07 21:37:06 | INFO  | 读取输入文件成功 | user=6, tool=3
+2026-06-07 21:37:06 | DEBUG | user_behavior 未知字段 | idx=0, warnings=['未知字段: action']
+2026-06-07 21:37:06 | DEBUG | user_behavior 未知字段 | idx=1, warnings=['未知字段: action']
+2026-06-07 21:37:06 | DEBUG | user_behavior 未知字段 | idx=2, warnings=['未知字段: action']
+2026-06-07 21:37:06 | DEBUG | user_behavior 未知字段 | idx=3, warnings=['未知字段: action']
+2026-06-07 21:37:06 | DEBUG | user_behavior 未知字段 | idx=4, warnings=['未知字段: action']
+2026-06-07 21:37:06 | ERROR | user_behavior 字段校验失败 | idx=5, errors=['缺少必需字段: uid', '缺少必需字段: content']
+2026-06-07 21:37:06 | DEBUG | user_behavior 未知字段 | idx=5, warnings=['未知字段: text', '未知字段: user_id', '未知字段: timestamp']
+2026-06-07 21:37:06 | WARNING | tool_result 缺失时间字段 | idx=0, uid=None
+2026-06-07 21:37:06 | WARNING | tool_result 缺失时间字段 | idx=1, uid=None
+2026-06-07 21:37:06 | WARNING | tool_result 缺失时间字段 | idx=2, uid=None
+2026-06-07 21:37:06 | INFO  | 完成字段归一化和文本清洗 | valid=9, total=9
+2026-06-07 21:37:06 | INFO  | 完成三级去重 | after_dedup=6, dropped=3
+2026-06-07 21:37:06 | INFO  | 时间解析统计 | failed=0, missing=2
+2026-06-07 21:37:06 | INFO  | 输出写入完成 | path=D:\藏数据\merged.jsonl, records=6
+2026-06-07 21:37:06 | INFO  | ==================================================
+2026-06-07 21:37:06 | INFO  | D2 合并去噪脚本完成 | total_input=9, valid_output=6

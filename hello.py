@@ -25,8 +25,9 @@ def main():
     # 2. 学员信息
     print()
     print("学员信息:")
-    print("  姓    名: 藏世杰")
-    print("  指导教师: 挑战杯麒麟赛题组")
+    print("  姓    名: 苏炯炼")
+    print("  学    号: 202504030411")
+    print("  指导老师: 林涌东")
     print(f"  当前时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
     # 3. 计算 1+2+...+100

@@ -14,3 +14,19 @@
 2026-06-07 19:57:18 | INFO  | 输入源文件 | events=14, snapshots=11
 2026-06-07 19:57:18 | INFO  | 完成记忆合并 | memories=11, conflicts=3
 2026-06-07 19:57:18 | INFO  | D5 记忆抽取脚本完成 | events=14, snapshots=11, memories=11, conflicts=3, review=1, validation_errors=0
+2026-06-07 20:03:51 | INFO  | D5 记忆抽取脚本启动
+2026-06-07 20:03:51 | INFO  | 输入源文件 | events=14, snapshots=11
+2026-06-07 20:03:51 | INFO  | 完成记忆合并 | memories=11, conflicts=3
+2026-06-07 20:03:51 | INFO  | D5 记忆抽取脚本完成 | events=14, snapshots=11, memories=11, conflicts=3, review=1, validation_errors=0
+2026-06-07 20:06:15 | INFO  | D5 记忆抽取脚本启动
+2026-06-07 20:06:15 | INFO  | 输入源文件 | events=14, snapshots=11
+2026-06-07 20:06:15 | INFO  | 完成记忆合并 | memories=11, conflicts=3
+2026-06-07 20:06:15 | INFO  | D5 记忆抽取脚本完成 | events=14, snapshots=11, memories=11, conflicts=3, review=1, validation_errors=0
+2026-06-07 21:36:43 | INFO  | D5 记忆抽取脚本启动
+2026-06-07 21:36:43 | INFO  | 输入源文件 | events=14, snapshots=11
+2026-06-07 21:36:43 | INFO  | 完成记忆合并 | memories=11, conflicts=3
+2026-06-07 21:36:43 | INFO  | D5 记忆抽取脚本完成 | events=14, snapshots=11, memories=11, conflicts=3, review=1, validation_errors=0
+2026-06-07 21:37:06 | INFO  | D5 记忆抽取脚本启动
+2026-06-07 21:37:06 | INFO  | 输入源文件 | events=14, snapshots=11
+2026-06-07 21:37:06 | INFO  | 完成记忆合并 | memories=11, conflicts=3
+2026-06-07 21:37:06 | INFO  | D5 记忆抽取脚本完成 | events=14, snapshots=11, memories=11, conflicts=3, review=1, validation_errors=0
