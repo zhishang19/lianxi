@@ -1,0 +1,72 @@
+[
+  {
+    "trace_id": "T-501",
+    "tool": "file_export",
+    "status": "ok",
+    "exec_ms": 420,
+    "output": "exported: /home/u001/月报_简洁版.pdf",
+    "flags": [],
+    "dup_count": 1
+  },
+  {
+    "trace_id": "T-502",
+    "tool": "file_export",
+    "status": "ok",
+    "exec_ms": 510,
+    "output": "exported: /home/u001/月报_详细版.pdf 嗯嗯完成啦！",
+    "flags": [],
+    "dup_count": 1
+  },
+  {
+    "trace_id": "T-503",
+    "tool": "web_search",
+    "status": "error",
+    "exec_ms": 3001,
+    "output": "timeout after 3000ms … 网络那个不稳定",
+    "flags": [
+      "tool_error",
+      "tool_timeout"
+    ],
+    "dup_count": 1
+  },
+  {
+    "trace_id": "T-504",
+    "tool": "shell_exec",
+    "status": "ok",
+    "exec_ms": 88,
+    "output": "kylin-driver-check: version 2.1.0\nstdout: OK",
+    "flags": [],
+    "dup_count": 1
+  },
+  {
+    "trace_id": "T-505",
+    "tool": "calendar_write",
+    "status": "ok",
+    "exec_ms": "640",
+    "output": "created event: 项目复盘 2026-06-05 15:00; attendee=**@example.com",
+    "flags": [
+      "sensitive_in_output"
+    ],
+    "dup_count": 1
+  },
+  {
+    "trace_id": "T-506",
+    "tool": "file_export",
+    "status": "fail",
+    "exec_ms": 920,
+    "output": "ERROR permission denied: /root/report.docx 嗯… retry? retry?",
+    "flags": [],
+    "dup_count": 2
+  },
+  {
+    "trace_id": "T-507",
+    "tool": "memory_delete",
+    "status": "ok",
+    "exec_ms": 77,
+    "output": "deleted candidate memory: email=zh****an@example.com reason=forget_command",
+    "flags": [
+      "sensitive_in_output"
+    ],
+    "dup_count": 1
+  }
+]

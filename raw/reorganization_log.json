@@ -1,0 +1,47 @@
+{
+  "timestamp": "2026-06-07 17:30:43",
+  "base_dir": "D:\\藏数据\\raw",
+  "operations": [
+    {
+      "step": "create_dirs",
+      "directories": [
+        "D:\\藏数据\\raw\\lib (已存在)",
+        "D:\\藏数据\\raw\\scripts (已存在)",
+        "D:\\藏数据\\raw\\outputs (已存在)"
+      ],
+      "status": "OK"
+    },
+    {
+      "step": "migrate",
+      "source": "D:\\藏数据\\raw\\advanced_cleaning.py",
+      "destination": "D:\\藏数据\\raw\\lib\\advanced_cleaning.py",
+      "description": "公共清洗库: DFA敏感词/时间流水线/SimHash/脱敏",
+      "size_bytes": 0,
+      "status": "SKIP (文件不存在)"
+    },
+    {
+      "step": "migrate",
+      "source": "D:\\藏数据\\raw\\run_batch_generated.py",
+      "destination": "D:\\藏数据\\raw\\scripts\\run_batch_generated.py",
+      "description": "批量运行脚本: D2-D6 generated/ 数据全量处理",
+      "size_bytes": 0,
+      "status": "SKIP (文件不存在)"
+    },
+    {
+      "step": "migrate",
+      "source": "D:\\藏数据\\chat_sessions_clean.csv",
+      "destination": "D:\\藏数据\\raw\\d3\\chat_sessions_clean.csv",
+      "description": "D3 输出文件: 清洗后对话 CSV",
+      "size_bytes": 0,
+      "status": "SKIP (文件不存在)"
+    }
+  ],
+  "summary": {
+    "files_moved": 0,
+    "files_skipped": 3,
+    "pycache_cleaned": 0,
+    "bytes_freed": 0,
+    "all_ok": true
+  },
+  "directory_tree": "raw/\n├── [DIR] agent/\n│   ├── [FILE] init_db.py (12.4KB)\n│   ├── [FILE] memory.db (36.0KB)\n│   ├── [FILE] memory_workflow.py (22.5KB)\n│   ├── [FILE] requirements.txt (306B)\n│   ├── [FILE] test_workflow.py (6.5KB)\n│   └── [FILE] verify_indexes.py (1006B)\n├── [DIR] d1/\n│   ├── [FILE] observe_demo.txt (370B)\n│   ├── [FILE] README.md (331B)\n│   └── [FILE] zangsj.md (295B)\n├── [DIR] d2/\n│   ├── [FILE] cleaning_report_d2.json (964B)\n│   ├── [FILE] merge_day2.ps1 (7.3KB)\n│   ├── [FILE] merge_day2.py (10.2KB)\n│   ├── [FILE] tool_result.json (658B)\n│   └── [FILE] user_behavior.json (946B)\n├── [DIR] d3/\n│   ├── [FILE] chat_sessions_clean.csv (940B)\n│   ├── [FILE] chat_sessions_dirty.csv (1.0KB)\n│   ├── [FILE] clean_basic.ps1 (4.2KB)\n│   ├── [FILE] clean_basic.py (6.8KB)\n│   └── [FILE] cleaning_report_d3.json (794B)\n├── [DIR] d4/\n│   ├── [FILE] chat_logs_raw.jsonl (2.4KB)\n│   ├── [FILE] chats.json (4.6KB)\n│   ├── [FILE] clean_multi_source.py (18.6KB)\n│   ├── [FILE] cleaning_report_d4.json (864B)\n│   ├── [FILE] config_manual.yaml (430B)\n│   ├── [FILE] knowledge.json (2.5KB)\n│   ├── [FILE] knowledge_raw.txt (1.9KB)\n│   ├── [FILE] preferences.json (3.7KB)\n│   ├── [FILE] preferences_raw.csv (923B)\n│   ├── [FILE] report.md (1.4KB)\n│   ├── [FILE] tool_result_raw.jsonl (1.2KB)\n│   └── [FILE] tools.json (1.6KB)\n├── [DIR] d5/\n│   ├── [FILE] cleaning_report_d5.json (1.1KB)\n│   ├── [FILE] conflict_candidates_raw.txt (936B)\n│   ├── [FILE] conflict_report.md (3.0KB)\n│   ├── [FILE] memory_events_raw.jsonl (2.6KB)\n│   ├── [FILE] merge_memories.py (20.7KB)\n│   ├── [FILE] merged_memories.jsonl (3.4KB)\n│   └── [FILE] user_memory_snapshots_raw.csv (966B)\n├── [DIR] d6/\n│   ├── [FILE] cleaning_report_d6.json (989B)\n│   ├── [FILE] eval_e2e.py (22.7KB)\n│   ├── [FILE] eval_prompts_dirty.csv (1.2KB)\n│   ├── [FILE] eval_report.md (2.8KB)\n│   ├── [FILE] eval_results.jsonl (3.9KB)\n│   ├── [FILE] quality_targets.md (999B)\n│   └── [FILE] tool_eval_trace_raw.jsonl (1.9KB)\n├── [DIR] generated/\n│   ├── [DIR] d02/\n│   │   ├── [FILE] cleaning_report_d2.json (893B)\n│   │   ├── [FILE] merged.jsonl (654.1KB)\n│   │   ├── [FILE] tool_result.jsonl (480.7KB)\n│   │   └── [FILE] user_behavior.jsonl (1125.3KB)\n│   ├── [DIR] d03/\n│   │   ├── [FILE] chat_sessions_clean.csv (1038.3KB)\n│   │   ├── [FILE] chat_sessions_dirty.csv (1190.9KB)\n│   │   └── [FILE] cleaning_report_d3.json (787B)\n│   ├── [DIR] d04/\n│   │   ├── [FILE] chat_logs_raw.jsonl (723.0KB)\n│   │   ├── [FILE] chats.json (928.8KB)\n│   │   ├── [FILE] cleaning_report_d4.json (1.2KB)\n│   │   ├── [FILE] knowledge.json (384.5KB)\n│   │   ├── [FILE] knowledge_raw.jsonl (334.7KB)\n│   │   ├── [FILE] preferences.json (500.1KB)\n│   │   ├── [FILE] preferences_raw.csv (224.9KB)\n│   │   ├── [FILE] tool_result_raw.jsonl (320.2KB)\n│   │   └── [FILE] tools.json (368.3KB)\n│   ├── [DIR] d05/\n│   │   ├── [FILE] cleaning_report_d5.json (859B)\n│   │   ├── [FILE] conflict_candidates_raw.csv (113.8KB)\n│   │   ├── [FILE] conflict_report.md (195B)\n│   │   ├── [FILE] memory_events_raw.jsonl (1386.8KB)\n│   │   ├── [FILE] merged_memories.jsonl (1047.2KB)\n│   │   └── [FILE] user_memory_snapshots_raw.csv (299.0KB)\n│   ├── [DIR] d06/\n│   │   ├── [FILE] cleaning_report_d6.json (750B)\n│   │   ├── [FILE] eval_prompts_dirty.csv (707.8KB)\n│   │   ├── [FILE] eval_report.md (304B)\n│   │   ├── [FILE] eval_results.jsonl (1483.8KB)\n│   │   └── [FILE] tool_eval_trace_raw.jsonl (845.6KB)\n│   ├── [FILE] batch_summary.json (745B)\n│   └── [FILE] MANIFEST.md (1.0KB)\n├── [DIR] lib/\n│   └── [FILE] advanced_cleaning.py (23.8KB)\n├── [DIR] outputs/\n├── [DIR] scripts/\n│   └── [FILE] run_batch_generated.py (30.5KB)\n├── [FILE] README.md (3.4KB)\n└── [FILE] reorganize.py (9.8KB)"
+}

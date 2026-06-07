@@ -1,0 +1,188 @@
+[
+  {
+    "uid": null,
+    "pref_key": "security_level",
+    "current_value": [
+      "高",
+      [],
+      []
+    ],
+    "current_version": "v1",
+    "scope": "needs_review",
+    "version_chain": [
+      {
+        "version": "v1",
+        "value": "高",
+        "note": "uid 缺失",
+        "source_id": "P6"
+      }
+    ],
+    "flags": [
+      "missing_uid"
+    ]
+  },
+  {
+    "uid": "U002",
+    "pref_key": "emoji_policy",
+    "current_value": [
+      "禁用",
+      [],
+      []
+    ],
+    "current_version": "v1",
+    "scope": "long",
+    "version_chain": [
+      {
+        "version": "v1",
+        "value": "禁用",
+        "note": "句首有 呃…就是…",
+        "source_id": "P3"
+      }
+    ],
+    "flags": [
+      "override_default"
+    ]
+  },
+  {
+    "uid": "U005",
+    "pref_key": "meeting_minutes_format",
+    "current_value": [
+      "bullet 列表",
+      [],
+      []
+    ],
+    "current_version": "v2",
+    "scope": "short",
+    "version_chain": [
+      {
+        "version": "v1",
+        "value": "三段式：背景、决定、待办",
+        "note": "用户明确要求记住",
+        "source_id": "P7"
+      },
+      {
+        "version": "v2",
+        "value": "bullet 列表",
+        "note": "仅本次例外，不应覆盖长期偏好",
+        "source_id": "P8"
+      }
+    ],
+    "flags": []
+  },
+  {
+    "uid": "u001",
+    "pref_key": "output_style",
+    "current_value": [
+      "详细、带数据表格",
+      [],
+      []
+    ],
+    "current_version": "v2",
+    "scope": "long",
+    "version_chain": [
+      {
+        "version": "v1",
+        "value": "简洁、少废话",
+        "note": "从对话 S100 抽取",
+        "source_id": "P1"
+      },
+      {
+        "version": "v2",
+        "value": "详细、带数据表格",
+        "note": "用户纠正 @@@",
+        "source_id": "P2"
+      }
+    ],
+    "flags": [
+      "override_default"
+    ]
+  },
+  {
+    "uid": "u002",
+    "pref_key": "emoji_policy",
+    "current_value": [
+      "允许少量 emoji",
+      [],
+      []
+    ],
+    "current_version": "v0",
+    "scope": "long",
+    "version_chain": [
+      {
+        "version": "v0",
+        "value": "允许少量 emoji",
+        "note": "管理员导入旧偏好，与用户表达冲突",
+        "source_id": "P9"
+      }
+    ],
+    "flags": [
+      "override_default"
+    ]
+  },
+  {
+    "uid": "u003",
+    "pref_key": "driver_update_entry",
+    "current_value": [
+      "驱动管理器",
+      [],
+      []
+    ],
+    "current_version": "v2",
+    "scope": "long",
+    "version_chain": [
+      {
+        "version": "v1",
+        "value": "系统更新",
+        "note": "旧知识",
+        "source_id": "P11"
+      },
+      {
+        "version": "v2",
+        "value": "驱动管理器",
+        "note": "用户纠正，需覆盖旧知识",
+        "source_id": "P12"
+      }
+    ],
+    "flags": []
+  },
+  {
+    "uid": "u003",
+    "pref_key": "search_scope",
+    "current_value": [
+      "奇麟系统/驱动",
+      [],
+      []
+    ],
+    "current_version": "v1",
+    "scope": "long",
+    "version_chain": [
+      {
+        "version": "v1",
+        "value": "奇麟系统/驱动",
+        "note": "含错别字 奇麟",
+        "source_id": "P4"
+      }
+    ],
+    "flags": []
+  },
+  {
+    "uid": "u006",
+    "pref_key": "privacy_policy",
+    "current_value": [
+      "不保存测试手机号",
+      [],
+      []
+    ],
+    "current_version": "v1",
+    "scope": "long",
+    "version_chain": [
+      {
+        "version": "v1",
+        "value": "不保存测试手机号",
+        "note": "从 S105 抽取",
+        "source_id": "P10"
+      }
+    ],
+    "flags": []
+  }
+]

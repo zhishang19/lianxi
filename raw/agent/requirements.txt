@@ -1,0 +1,14 @@
+# OS Agent 记忆检索工作流 - 依赖
+
+# LangGraph 核心
+langgraph>=0.2.0
+
+# 语言模型集成 (可选，用于真实生成回答)
+# openai>=1.0.0
+# dashscope>=1.14.0  # 通义千问
+
+# SQLite (Python 内置，无需安装)
+# 数据库操作
+sqlite3
+
+# 正则表达式 (Python 内置，无需安装)
