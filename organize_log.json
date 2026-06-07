@@ -1,0 +1,52 @@
+{
+  "actions": [
+    {
+      "time": "2026-06-07 19:54:24",
+      "action": "DELETE",
+      "src": "push_out.log",
+      "dst": null,
+      "status": "OK",
+      "note": "临时日志/演示文件"
+    },
+    {
+      "time": "2026-06-07 19:54:24",
+      "action": "DELETE",
+      "src": "push_err.log",
+      "dst": null,
+      "status": "OK",
+      "note": "临时日志/演示文件"
+    },
+    {
+      "time": "2026-06-07 19:54:24",
+      "action": "DELETE",
+      "src": "demo_branch_change.txt",
+      "dst": null,
+      "status": "OK",
+      "note": "临时日志/演示文件"
+    },
+    {
+      "time": "2026-06-07 19:54:24",
+      "action": "DELETE_DIR",
+      "src": "raw\\agent\\__pycache__",
+      "dst": null,
+      "status": "OK",
+      "note": "Python 编译缓存"
+    },
+    {
+      "time": "2026-06-07 19:54:24",
+      "action": "DELETE_DIR",
+      "src": "raw\\lib\\__pycache__",
+      "dst": null,
+      "status": "OK",
+      "note": "Python 编译缓存"
+    },
+    {
+      "time": "2026-06-07 19:54:24",
+      "action": "DELETE",
+      "src": "raw\\agent\\agent_memory.db",
+      "dst": null,
+      "status": "OK",
+      "note": "临时数据库"
+    }
+  ]
+}
