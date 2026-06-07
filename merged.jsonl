@@ -1,0 +1,6 @@
+{"source": "user_behavior", "uid": "u001", "time": "2026-06-02 09:15:00", "time_invalid": false, "type": "chat", "content": "帮我把 文档 导出成 PDF 吧！", "dup_count": 1}
+{"source": "user_behavior", "uid": "u001", "time": "2026-06-02 09:16:00", "time_invalid": false, "type": "chat", "content": "不是 word 是 wps 啦", "dup_count": 1}
+{"source": "user_behavior", "uid": "u002", "time": "2026-06-02 10:00:00", "time_invalid": false, "type": "click", "content": "设置->隐私->清除缓存", "dup_count": 1}
+{"source": "user_behavior", "uid": "u004", "time": "2026-06-02 14:30:00", "time_invalid": false, "type": "voice", "content": "然后帮我查一下那个麒麟系统怎么装驱动", "dup_count": 1}
+{"source": "tool_result", "uid": null, "time": null, "time_invalid": true, "type": "file_export", "content": "OK: exported to /home/user/报告_final.pdf", "tool_status": "success", "tool_latency_ms": "312", "trace_id": "T-1001", "dup_count": 3}
+{"source": "user_behavior", "uid": "u003", "time": null, "time_invalid": true, "type": "chat", "content": "能不能别每次弹窗啊", "dup_count": 1}

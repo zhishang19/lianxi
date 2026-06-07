@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated data (large files, keep in .gitignore)
+raw/generated/d*/
+raw/generated/batch_*.json
+raw/generated/batch_*.log
+
+# Database files
+*.db
+
+# Backup files
+*.bak
+*.bak.*
+
+# Reports (generated at runtime)
+cleaning_report_*.json
