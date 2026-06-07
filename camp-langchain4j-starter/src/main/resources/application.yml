@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: camp-langchain4j-starter
+
+# LangChain4j 配置 (从环境变量读取 API Key, 不硬编码)
+langchain4j:
+  dashscope:
+    api-key: ${DASHSCOPE_API_KEY:}
+
+logging:
+  level:
+    dev.langchain4j: INFO
+    com.camp.langchain4j: DEBUG
+  pattern:
+    console: "%d{HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n"
