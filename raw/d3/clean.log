@@ -77,3 +77,11 @@
 2026-06-07 21:37:06 | ERROR | 字段校验失败 | row_idx=9, errors=['字段 user_id 校验失败: uid 为空']
 2026-06-07 21:37:06 | INFO  | 完成清洗 | valid=10, privacy=1, sensitive=0
 2026-06-07 21:37:06 | INFO  | D3 基础清洗脚本完成 | total_input=11, valid_output=10
+2026-06-08 08:44:19 | INFO  | D3 基础清洗脚本启动
+2026-06-08 08:44:19 | INFO  | 输入文件 | path=D:\藏数据\raw\d3\chat_sessions_dirty.csv
+2026-06-08 08:44:19 | INFO  | 完成精确去重 | dropped=1, kept=10
+2026-06-08 08:44:19 | ERROR | 字段校验失败 | row_idx=6, errors=['字段 message 校验失败: 字段为空']
+2026-06-08 08:44:19 | ERROR | 字段校验失败 | row_idx=8, errors=['字段 user_id 校验失败: uid 为空']
+2026-06-08 08:44:19 | ERROR | 字段校验失败 | row_idx=9, errors=['字段 user_id 校验失败: uid 为空']
+2026-06-08 08:44:19 | INFO  | 完成清洗 | valid=10, privacy=1, sensitive=0
+2026-06-08 08:44:19 | INFO  | D3 基础清洗脚本完成 | total_input=11, valid_output=10

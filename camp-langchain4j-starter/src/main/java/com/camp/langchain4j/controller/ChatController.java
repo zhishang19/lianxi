@@ -1,16 +1,20 @@
 package com.camp.langchain4j.controller;
 
 import com.camp.langchain4j.service.ChatService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * /api/chat 接口
+ * 训练营 D7 验收接口
  *
- * 入参: {"message": "用户问题"}
- * 出参: 模型回复字符串
+ * - GET  /api/health            健康检查 (必做)
+ * - GET  /api/chat?q=...        简单问答 (D7 必做)
+ * - POST /api/chat/preference   带偏好的问答 (D7 A 轨加做)
+ *   请求体: {"question":"...","preference":"..."}
  */
 @RestController
 @RequestMapping("/api")
@@ -22,14 +26,24 @@ public class ChatController {
         this.chatService = chatService;
     }
 
-    @PostMapping("/chat")
-    public String chat(@RequestBody ChatRequest request) {
-        if (request == null || request.message() == null || request.message().isBlank()) {
-            return "错误: message 不能为空";
-        }
-        return chatService.chat(request.message());
+    @GetMapping("/health")
+    public String health() {
+        return "ok";
     }
 
-    /** 请求体 */
-    public record ChatRequest(String message) {}
+    @GetMapping("/chat")
+    public String chat(@RequestParam("q") String question) {
+        return chatService.chat(question);
+    }
+
+    @PostMapping("/chat/preference")
+    public String chatWithPreference(@RequestBody ChatPreferenceRequest request) {
+        if (request == null) {
+            return "错误: 请求体不能为空";
+        }
+        return chatService.chatWithPreference(request.question(), request.preference());
+    }
+
+    /** A 轨请求体 */
+    public record ChatPreferenceRequest(String question, String preference) {}
 }

@@ -15,7 +15,7 @@
     <artifactId>camp-langchain4j-starter</artifactId>
     <version>1.0.0</version>
     <name>camp-langchain4j-starter</name>
-    <description>训练营 LangChain4j 最小可运行模板 - 跑通 /api/chat</description>
+    <description>训练营 LangChain4j 最小可运行模板 - 跑通 /api/chat /api/chat/preference</description>
 
     <properties>
         <java.version>17</java.version>
@@ -29,17 +29,24 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- LangChain4j Spring Boot Starter (自动配置) -->
+        <!-- LangChain4j 核心 (含 ChatLanguageModel 接口) -->
         <dependency>
             <groupId>dev.langchain4j</groupId>
-            <artifactId>langchain4j-spring-boot-starter</artifactId>
+            <artifactId>langchain4j</artifactId>
             <version>${langchain4j.version}</version>
         </dependency>
 
-        <!-- 通义千问适配 (国内推荐, 训练营可白嫖) -->
+        <!-- Ollama 适配 (本地 qwen2.5:7b, 集训机房推荐) -->
         <dependency>
             <groupId>dev.langchain4j</groupId>
-            <artifactId>langchain4j-dashscope</artifactId>
+            <artifactId>langchain4j-ollama</artifactId>
+            <version>${langchain4j.version}</version>
+        </dependency>
+
+        <!-- OpenAI 兼容 API (云端 GPT/DeepSeek 等) -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-open-ai</artifactId>
             <version>${langchain4j.version}</version>
         </dependency>
 
