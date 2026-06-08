@@ -63,6 +63,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.camp.langchain4j.CampLangchain4jApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>

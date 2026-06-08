@@ -174,23 +174,23 @@ class TimePipeline:
         "%Y-%m-%d",
     ]
 
-    # 第4层: 相对时间关键词映射
+    # 第4层: 相对时间关键词映射 (BUG-4 修复: 全部用 lambda 包装, 调用时再求值)
     RELATIVE_PATTERNS = [
         (r"^(前天)", -2),
         (r"^(昨天)", -1),
         (r"^(今天|当天)", 0),
         (r"^(明天|次日)", 1),
         (r"^(后天)", 2),
-        (r"^(\d+)天前", lambda m: -int(m.group(1))),
-        (r"^(\d+)天后", lambda m: int(m.group(1))),
-        (r"^(上周一?|last\s+(?:monday))", lambda m: -_weekday_offset(1)),
-        (r"^(上周二?|last\s+tuesday)", lambda m: -_weekday_offset(2)),
-        (r"^(上周三?|last\s+wednesday)", lambda m: -_weekday_offset(3)),
-        (r"^(上周四?|last\s+thursday)", lambda m: -_weekday_offset(4)),
-        (r"^(上周五?|last\s+friday)", lambda m: -_weekday_offset(5)),
-        (r"^(上周六?|last\s+saturday)", lambda m: -_weekday_offset(6)),
-        (r"^(上周日?|last\s+sunday)", lambda m: -_weekday_offset(7)),
-        (r"^(这周一?|this\s+monday)", lambda m: -_weekday_offset(0, True)),
+        (r"^(\d+)天前", lambda m, _bt: -int(m.group(1))),
+        (r"^(\d+)天后", lambda m, _bt: int(m.group(1))),
+        (r"^(上周一?|last\s+(?:monday))", lambda _m, bt: -_weekday_offset(1, bt)),
+        (r"^(上周二?|last\s+tuesday)", lambda _m, bt: -_weekday_offset(2, bt)),
+        (r"^(上周三?|last\s+wednesday)", lambda _m, bt: -_weekday_offset(3, bt)),
+        (r"^(上周四?|last\s+thursday)", lambda _m, bt: -_weekday_offset(4, bt)),
+        (r"^(上周五?|last\s+friday)", lambda _m, bt: -_weekday_offset(5, bt)),
+        (r"^(上周六?|last\s+saturday)", lambda _m, bt: -_weekday_offset(6, bt)),
+        (r"^(上周日?|last\s+sunday)", lambda _m, bt: -_weekday_offset(7, bt)),
+        (r"^(这周一?|this\s+monday)", lambda _m, bt: _weekday_offset(1, bt, this_week=True)),
     ]
 
     # 相对时间中的时段提取
@@ -267,7 +267,13 @@ class TimePipeline:
             m = re.search(pattern, s)
             if m:
                 if callable(days_delta):
-                    offset_days = days_delta(m)
+                    # BUG-4 修复: 闭包内 self.base_time 已经捕获 (上层实例), 不需要额外参数
+                    # 但 days_delta 是 _weekday_offset 的偏函数, 需要 base_time
+                    # 改用 lambda 包装时传入 base_time
+                    if days_delta.__name__ == "_weekday_offset":
+                        offset_days = days_delta(m, self.base_time)
+                    else:
+                        offset_days = days_delta(m)
                 else:
                     offset_days = days_delta
                 break
@@ -297,9 +303,14 @@ class TimePipeline:
         return target_date.strftime("%Y-%m-%d %H:%M:%S"), False, "relative"
 
 
-def _weekday_offset(target_wday, this_week=False):
-    """计算距离目标星期几的天数偏移"""
-    now = datetime.now().weekday()  # 0=Monday
+def _weekday_offset(target_wday, base_time=None, this_week=False):
+    """
+    计算距离目标星期几的天数偏移
+    BUG-4 修复: 接受 base_time 参数, 不再用 datetime.now()
+    """
+    if base_time is None:
+        base_time = datetime.now()
+    now = base_time.weekday()  # 0=Monday
     target = target_wday - 1         # 转为 0-based Monday
     if this_week:
         diff = target - now
@@ -410,22 +421,25 @@ class SimHashDedup:
             content_fn = lambda r: r.get("content") or r.get("text") or r.get("message") or ""
 
         kept = []
+        # BUG-3 修复: O(1) key->index 映射, 替代 O(N) 循环查找
+        key_to_idx = {}
         dup_count = 0
         sim = SimHashDedup(hash_bits=self.hash_bits, threshold=self.threshold)
 
         for r in records:
             content = content_fn(r)
-            is_dup, dist, matched = sim.check(content)
+            r_key = key_fn(r)
+            is_dup, dist, matched_key = sim.check(content)
             if is_dup:
                 dup_count += 1
-                # 更新已保留记录的 dup_count
-                for k in kept:
-                    if key_fn(k) == matched:
-                        k["_simhash_dup_count"] = k.get("_simhash_dup_count", 1) + 1
-                        break
+                # matched_key 是之前 sim.add 时存的 key
+                if matched_key in key_to_idx:
+                    idx = key_to_idx[matched_key]
+                    kept[idx]["_simhash_dup_count"] = kept[idx].get("_simhash_dup_count", 1) + 1
             else:
-                sim.add(content, key_fn(r))
+                sim.add(content, r_key)
                 r["_simhash_dup_count"] = 1
+                key_to_idx[r_key] = len(kept)
                 kept.append(r)
 
         return kept, dup_count

@@ -63,8 +63,10 @@ def main():
     ]
 
     for name, script, cwd in tasks:
-        # 检查 skip 参数
-        if skip and not any(s in name for s in skip):
+        # BUG-10 修复: 默认全跑, 传 --skip 时跳过含关键词的任务 (而不是"仅含")
+        if skip and any(s in name for s in skip):
+            print(f"\n[SKIP] {name}  (匹配 skip 列表: {skip})")
+            results.append({"name": name, "status": "SKIP"})
             continue
         script_path = cwd / script
         if not script_path.exists():

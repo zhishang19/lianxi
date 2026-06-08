@@ -37,3 +37,32 @@ raw/generated/batch_*.log
 
 # Reports (generated at runtime)
 cleaning_report_*.json
+
+# D7 Spring Boot (BUG-11 修复)
+camp-langchain4j-starter/target/
+camp-langchain4j-starter/*.log
+camp-langchain4j-starter/cp.txt
+camp-langchain4j-starter/.classpath
+camp-langchain4j-starter/.project
+camp-langchain4j-starter/.settings/
+camp-langchain4j-starter/.idea/
+camp-langchain4j-starter/dependency-reduced-pom.xml
+camp-langchain4j-starter/hs_err_pid*.log
+
+# Local env / secrets (BUG-11 修复: 防止真实 API Key 泄露)
+.env
+.env.local
+*.local.yml
+
+# Java temp
+*.class
+*.jar
+!camp-langchain4j-starter/src/
+
+# Logs anywhere
+*.log
+logs/
+
+# Agent SQLite
+raw/agent/agent_memory.db
+raw/agent/agent_memory.db-journal

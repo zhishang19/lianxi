@@ -43,15 +43,38 @@ except ImportError:
 
 def tool_calculator(expression: str) -> str:
     """
-    工具: 计算器
+    工具: 计算器 (使用 ast 解析, 不调用 eval, 防代码注入)
     入参: 数学表达式 (如 "1+2*3")
     出参: 计算结果字符串
     """
-    # 安全: 只允许数字和运算符
+    import ast
+    import operator
     if not re.match(r'^[\d\s\+\-\*\/\.\(\)]+$', expression):
         return f"错误: 表达式包含非法字符 (只允许数字和 + - * /)"
+
+    # 安全的二元运算白名单
+    _BIN_OPS = {
+        ast.Add: operator.add, ast.Sub: operator.sub,
+        ast.Mult: operator.mul, ast.Div: operator.truediv,
+        ast.Mod: operator.mod, ast.Pow: operator.pow,
+        ast.FloorDiv: operator.floordiv,
+    }
+    _UNARY_OPS = {ast.UAdd: operator.pos, ast.USub: operator.neg}
+
+    def _eval(node):
+        if isinstance(node, ast.Constant) and isinstance(node.value, (int, float)):
+            return node.value
+        if isinstance(node, ast.BinOp) and type(node.op) in _BIN_OPS:
+            return _BIN_OPS[type(node.op)](_eval(node.left), _eval(node.right))
+        if isinstance(node, ast.UnaryOp) and type(node.op) in _UNARY_OPS:
+            return _UNARY_OPS[type(node.op)](_eval(node.operand))
+        if isinstance(node, ast.Expression):
+            return _eval(node.body)
+        raise ValueError(f"不支持的节点: {type(node).__name__}")
+
     try:
-        result = eval(expression, {"__builtins__": {}}, {})
+        tree = ast.parse(expression, mode="eval")
+        result = _eval(tree)
         return f"计算结果: {expression} = {result}"
     except Exception as e:
         return f"计算失败: {e}"
@@ -159,8 +182,8 @@ class MiniAgent:
         # 纯算式
         if re.match(r'^[\d\s\+\-\*\/\.\(\)]+$', q) and any(op in q for op in '+-*/'):
             return ("calculator", q, 0.9)
-        # 时间
-        if "几点" in q or "时间" in q or "现在" in q and "时" in q:
+        # 时间 (BUG-12 修复: 加括号, 消除运算符优先级歧义)
+        if ("几点" in q) or ("时间" in q) or ("现在" in q and "时" in q):
             return ("time", "", 0.9)
         # 记忆保存 (用户说"记住"/"我喜欢")
         m = re.search(r'记住[:：]?\s*(.+)', q)
@@ -168,7 +191,7 @@ class MiniAgent:
             content = m.group(1).strip()
             # 拆 key=value
             if "=" in content or "是" in content:
-                parts = re.split(r'[=是]', content, 1)
+                parts = re.split(r'[=是]', content, maxsplit=1)
                 return ("save", (parts[0].strip(), parts[1].strip()), 0.85)
         # 记忆回忆
         # 特殊模式: "我叫什么名字" / "我多大了" 等

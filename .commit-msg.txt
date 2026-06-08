@@ -1,0 +1,21 @@
+fix: 修复 13 个关键 bug (D7 强化 + Python 流水线)
+
+- BUG-1:  D7 LLM 调用添加 60s 超时
+- BUG-2:  mini_agent Memory 路径改为相对脚本 (不再硬编码 d:/藏数据)
+- BUG-3:  SimHashDedup 用 key_to_idx 字典 (替代 O(N) 循环查找)
+- BUG-4:  _weekday_offset 接受 base_time, RELATIVE_PATTERNS 改 lambda
+- BUG-5:  mini_agent 改用 ast.literal_eval 替代 eval() (防代码注入)
+- BUG-6:  D7 WebConfig 允许 CORS
+- BUG-7:  D7 GlobalExceptionHandler (400/502/503 分类)
+- BUG-8:  D7 provider 严格白名单校验
+- BUG-9:  D7 输入校验抛 IllegalArgumentException -> 400
+- BUG-10: run_all.py --skip 改为真正"跳过"
+- BUG-11: .gitignore 补全 (target/ *.log cp.txt .env agent_memory.db)
+- BUG-12: mini_agent 运算符优先级加括号
+- BUG-13: 移除 mini_agent tool_save_memory 死代码
+- BUG-14: D7 preference 截断 + 去换行 (防 prompt 注入)
+
+验证:
+- Python 流水线 8/8 PASS
+- D7 BUILD SUCCESS
+- D7 /api/health=ok, /api/chat?q= -> HTTP 400, /api/chat?q=hello -> HTTP 502 JSON

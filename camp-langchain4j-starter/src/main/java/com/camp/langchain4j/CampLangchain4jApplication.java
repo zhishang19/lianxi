@@ -17,6 +17,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * 默认走本地 Ollama (qwen2.5:7b);
  * 切换云端: $env:CAMP_LLM_PROVIDER="openai" ; $env:OPENAI_API_KEY="sk-..."
+ *
+ * CORS: 允许所有来源 (训练营开发用, 生产应限白名单)
  */
 @SpringBootApplication
 public class CampLangchain4jApplication {

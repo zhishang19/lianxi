@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 /**
  * 训练营 D7 验收接口
  *
@@ -32,16 +34,22 @@ public class ChatController {
     }
 
     @GetMapping("/chat")
-    public String chat(@RequestParam("q") String question) {
-        return chatService.chat(question);
+    public Map<String, String> chat(@RequestParam("q") String question) {
+        String answer = chatService.chat(question);
+        return Map.of("question", question, "answer", answer);
     }
 
     @PostMapping("/chat/preference")
-    public String chatWithPreference(@RequestBody ChatPreferenceRequest request) {
+    public Map<String, String> chatWithPreference(@RequestBody ChatPreferenceRequest request) {
         if (request == null) {
-            return "错误: 请求体不能为空";
+            throw new IllegalArgumentException("请求体不能为空");
         }
-        return chatService.chatWithPreference(request.question(), request.preference());
+        String answer = chatService.chatWithPreference(request.question(), request.preference());
+        return Map.of(
+                "question", request.question() == null ? "" : request.question(),
+                "preference", request.preference() == null ? "" : request.preference(),
+                "answer", answer
+        );
     }
 
     /** A 轨请求体 */
