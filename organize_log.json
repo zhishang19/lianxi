@@ -1,7 +1,7 @@
 {
   "actions": [
     {
-      "time": "2026-06-08 09:25:50",
+      "time": "2026-06-08 09:54:56",
       "action": "DELETE_DIR",
       "src": "raw\\agent\\__pycache__",
       "dst": null,
@@ -9,7 +9,7 @@
       "note": "Python 编译缓存"
     },
     {
-      "time": "2026-06-08 09:25:50",
+      "time": "2026-06-08 09:54:56",
       "action": "DELETE_DIR",
       "src": "raw\\lib\\__pycache__",
       "dst": null,
@@ -17,7 +17,7 @@
       "note": "Python 编译缓存"
     },
     {
-      "time": "2026-06-08 09:25:50",
+      "time": "2026-06-08 09:54:56",
       "action": "DELETE",
       "src": "raw\\agent\\agent_memory.db",
       "dst": null,
