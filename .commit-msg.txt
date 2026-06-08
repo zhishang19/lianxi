@@ -1,8 +1,0 @@
-chore: 更新运行日志和清洗报告 (D2-D6 + organize)
-
-重跑验证:
-- Python 流水线 8/8 PASS (100%)
-- D7 Spring Boot PID 12792 运行中
-- /api/health=ok
-- /actuator/health={"status":"UP","groups":["liveness","readiness"]}
-- organize 清理 3 项
