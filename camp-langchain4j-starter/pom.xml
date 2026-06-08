@@ -37,10 +37,12 @@
         </dependency>
 
         <!-- Ollama 适配 (本地 qwen2.5:7b, 集训机房推荐) -->
+        <!-- BUG-17 修复: 标记 optional=true, 减少 classpath 体积, 用户按需引入 -->
         <dependency>
             <groupId>dev.langchain4j</groupId>
             <artifactId>langchain4j-ollama</artifactId>
             <version>${langchain4j.version}</version>
+            <optional>true</optional>
         </dependency>
 
         <!-- OpenAI 兼容 API (云端 GPT/DeepSeek 等) -->
@@ -48,6 +50,13 @@
             <groupId>dev.langchain4j</groupId>
             <artifactId>langchain4j-open-ai</artifactId>
             <version>${langchain4j.version}</version>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- BUG-18 修复: actuator 健康检查端点 (生产用) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
         <!-- 测试 -->

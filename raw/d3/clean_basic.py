@@ -68,7 +68,7 @@ def find_project_root(start):
 
 ROOT = find_project_root(ROOT)
 IN_FILE = ROOT / "raw" / "d3" / "chat_sessions_dirty.csv"
-OUT_FILE = ROOT / "chat_sessions_clean.csv"
+OUT_FILE = ROOT / "raw" / "d3" / "chat_sessions_clean.csv"  # BUG-16 修复: 输出到 raw/d3/
 REPORT_PATH = ROOT / "raw" / "d3" / "cleaning_report_d3.json"
 
 # ---------- 全局高级组件 ----------

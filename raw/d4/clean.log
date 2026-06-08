@@ -102,3 +102,11 @@
 2026-06-08 09:36:22 | ERROR | tool schema 校验失败 | trace=T-506, error=缺少必需字段: uid
 2026-06-08 09:36:22 | ERROR | tool schema 校验失败 | trace=T-506, error=缺少必需字段: uid
 2026-06-08 09:36:22 | ERROR | tool schema 校验失败 | trace=T-507, error=缺少必需字段: uid
+2026-06-08 09:44:31 | ERROR | tool schema 校验失败 | trace=T-501, error=缺少必需字段: uid
+2026-06-08 09:44:31 | ERROR | tool schema 校验失败 | trace=T-502, error=缺少必需字段: uid
+2026-06-08 09:44:31 | ERROR | tool schema 校验失败 | trace=T-503, error=缺少必需字段: uid
+2026-06-08 09:44:31 | ERROR | tool schema 校验失败 | trace=T-504, error=缺少必需字段: uid
+2026-06-08 09:44:31 | ERROR | tool schema 校验失败 | trace=T-505, error=缺少必需字段: uid
+2026-06-08 09:44:31 | ERROR | tool schema 校验失败 | trace=T-506, error=缺少必需字段: uid
+2026-06-08 09:44:31 | ERROR | tool schema 校验失败 | trace=T-506, error=缺少必需字段: uid
+2026-06-08 09:44:31 | ERROR | tool schema 校验失败 | trace=T-507, error=缺少必需字段: uid

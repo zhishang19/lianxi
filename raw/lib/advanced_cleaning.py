@@ -339,14 +339,24 @@ class SimHashDedup:
         is_dup, dist = deduper.check("帮我订购明天去北京飞机票")
     """
 
-    def __init__(self, hash_bits=64, threshold=3):
+    def __init__(self, hash_bits=64, threshold=3, lsh_bands=4, lsh_rows=16):
+        """
+        BUG-15 修复: 引入 LSH 桶索引, 检查从 O(N) 降到 O(1)~O(K) (K 是同桶候选数)
+        64-bit 默认 4 bands × 16 rows, 配合 threshold=3 命中率 > 95%
+        lsh_bands * lsh_rows 必须 == hash_bits
+        """
+        if lsh_bands * lsh_rows != hash_bits:
+            raise ValueError(f"lsh_bands({lsh_bands}) * lsh_rows({lsh_rows}) 必须等于 hash_bits({hash_bits})")
         self.hash_bits = hash_bits
         self.threshold = threshold
-        self._fingerprints = []  # [(fingerprint, original_key)]
+        self.lsh_bands = lsh_bands
+        self.lsh_rows = lsh_rows
+        self._fingerprints = []   # [(fingerprint, key)]
+        self._lsh_buckets = [dict() for _ in range(lsh_bands)]  # band -> {band_hash: [idx_in_fingerprints]}
 
     def reset(self):
-        """清空去重集合"""
         self._fingerprints = []
+        self._lsh_buckets = [dict() for _ in range(self.lsh_bands)]
 
     @staticmethod
     def _tokenize(text):
@@ -377,6 +387,16 @@ class SimHashDedup:
                 fingerprint |= 1 << i
         return fingerprint
 
+    def _band_hashes(self, fp):
+        """把 fingerprint 切成 bands, 每个 band 提取 lsh_rows 位作为桶 key"""
+        hashes = []
+        for b in range(self.lsh_bands):
+            # 取 band b 的 lsh_rows 位 (从低位开始切片)
+            shift = b * self.lsh_rows
+            mask = (1 << self.lsh_rows) - 1
+            hashes.append((fp >> shift) & mask)
+        return hashes
+
     @staticmethod
     def hamming_distance(fp1, fp2):
         """计算两个指纹的海明距离"""
@@ -388,19 +408,33 @@ class SimHashDedup:
         return dist
 
     def add(self, text, key=None):
-        """添加一条记录到去重集合"""
+        """添加一条记录到去重集合 + LSH 桶"""
         fp = self.compute_fingerprint(text)
-        self._fingerprints.append((fp, key or text))
+        k = key or text
+        idx = len(self._fingerprints)
+        self._fingerprints.append((fp, k))
+        # 写入所有 band 桶
+        for b, band_hash in enumerate(self._band_hashes(fp)):
+            self._lsh_buckets[b].setdefault(band_hash, []).append(idx)
 
     def check(self, text):
         """
-        检查是否与已有记录近似重复。
+        检查是否与已有记录近似重复 (LSH 优化版)。
         返回 (is_duplicate, min_distance, matched_key)
         """
         fp = self.compute_fingerprint(text)
+        # 用 LSH 桶收集候选索引 (set 去重)
+        candidates = set()
+        for b, band_hash in enumerate(self._band_hashes(fp)):
+            candidates.update(self._lsh_buckets[b].get(band_hash, []))
+
+        if not candidates:
+            return False, self.hash_bits, None
+
         min_dist = self.hash_bits + 1
         matched = None
-        for stored_fp, key in self._fingerprints:
+        for idx in candidates:
+            stored_fp, key = self._fingerprints[idx]
             d = self.hamming_distance(fp, stored_fp)
             if d < min_dist:
                 min_dist = d

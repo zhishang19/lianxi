@@ -25,3 +25,18 @@ logging:
     com.camp.langchain4j: DEBUG
   pattern:
     console: "%d{HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n"
+
+# BUG-18 修复: actuator 端点配置 (健康检查 + info)
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: when_authorized
+      probes:
+        enabled: true
+  info:
+    env:
+      enabled: true

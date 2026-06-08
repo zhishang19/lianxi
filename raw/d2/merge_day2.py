@@ -71,7 +71,7 @@ def find_project_root(start):
 
 ROOT = find_project_root(ROOT)
 RAW = ROOT / "raw" / "d2"
-OUT = ROOT / "merged.jsonl"
+OUT = RAW / "merged.jsonl"  # BUG-16 修复: 输出到 raw/d2/ 而非项目根
 REPORT_PATH = RAW / "cleaning_report_d2.json"
 
 # ---------- 字段归一化 ----------
